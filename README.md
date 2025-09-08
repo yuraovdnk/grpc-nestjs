@@ -16,7 +16,7 @@ And fill required environment variables, like this:
 
 ```dotenv
 NODE_ENV=development
-GRPC_SERVER_HOST=localhost
+GRPC_SERVER_HOST=0.0.0.0
 GRPC_SERVER_PORT=5000
 API_PORT=3000
 ```
