@@ -1,0 +1,15 @@
+version: v2
+clean: true
+inputs:
+  - directory: ./proto
+managed:
+  enabled: true
+plugins:
+  - remote: buf.build/community/stephenh-ts-proto
+    out: generated
+    opt:
+      - nestJs=true
+      - esModuleInterop=true
+      - outputServices=grpc-js
+      - addGrpcMetadata=true
+      - lowerCaseServiceMethods=true

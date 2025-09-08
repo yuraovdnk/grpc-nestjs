@@ -1,0 +1,30 @@
+services:
+  producer:
+    build:
+      context: ./
+      dockerfile: apps/producer/Dockerfile
+    container_name: producer
+    networks:
+      test-network:
+    env_file:
+      - .env
+    ports:
+      - "${GRPC_SERVER_PORT}:${GRPC_SERVER_PORT}"
+
+  consumer:
+    build:
+      context: ./
+      dockerfile: apps/consumer/Dockerfile
+    container_name: consumer
+    networks:
+      test-network:
+    environment:
+      GRPC_SERVER_HOST: producer
+    env_file:
+      - .env
+    ports:
+      - "${API_PORT}:${API_PORT}"
+
+networks:
+  test-network:
+    name: test-network
